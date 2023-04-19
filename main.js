@@ -19,6 +19,7 @@ document.getElementById('print').onclick = function(e) {
     }
     newwin.onload = function() {
         newwin.makeTimesheets(date, names);
+        if (document.getElementById('auto-close').checked) newwin.onblur = newwin.close;
         newwin.print();
     };
 }
