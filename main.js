@@ -12,7 +12,7 @@ document.getElementById('print').onclick = function(e) {
     const date = new Date(document.getElementById('start-date').valueAsDate.valueOf());
     date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
     
-    if (date.getDay() !== 6 && !confirm(`You entered a ${date.toLocaleDateString('en-US', { weekday: 'long' })}. Are you sure you want this?`) {
+    if (date.getDay() !== 6 && !confirm(`You entered a ${date.toLocaleDateString('en-US', { weekday: 'long' })}. Are you sure you want this?`)) {
         return;
     }
 
