@@ -22,11 +22,12 @@ window.makeTimesheets = function(date, names) {
         }
     }
 
-    for (let i = 0; i < names.length; i++) {
-        for (let j = 1; j <= 2; j++) {
+    for (let j = 1; j <= 2; j++) {
+        for (let i = 0; i < names.length; i++) {
             const table = (j === 1 ? week1 : week2).cloneNode(true);
             table.querySelector('.employee-name').textContent = names[i];
             document.getElementById(`week-${j}`).appendChild(table);
         }
+        names.reverse();
     }
 };
