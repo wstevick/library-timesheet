@@ -16,7 +16,7 @@ window.makeTimesheets = function(date, names) {
 
         for (let j = 0; j < 7; j++) {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${date.toLocaleDateString('en-US', { weekday: 'short' })} ${date.getMonth()}/${date.getDate()}</td><td></td>`;
+            tr.innerHTML = `<td class="text-center">${date.toLocaleDateString('en-US', { weekday: 'short' })} ${date.getMonth()}/${date.getDate()}</td><td></td>`;
             week.querySelector('.hours-body').appendChild(tr);
             date.setDate(date.getDate() + 1);
         }
