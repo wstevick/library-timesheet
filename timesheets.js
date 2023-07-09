@@ -36,7 +36,7 @@ window.makeTimesheets = function(date, names) {
                 if (weekid === 2) nameid = maxGroupSize - nameid - 1; // reverse second sheet of names
                 if (nameid < groupSize) {
                     const table = (weekid === 1 ? week1 : week2).cloneNode(true);
-                    table.querySelector('.employee-name').textContent = names[id];
+                    table.querySelector('.employee-name').textContent = names[nameid];
                     sheetRow.appendChild(table);
                 } else {
                     const blank = document.createElement('div');
