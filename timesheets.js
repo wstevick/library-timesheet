@@ -23,20 +23,26 @@ window.makeTimesheets = function(date, names) {
         }
     }
 
-    let container = document.getElementById('content');
+    const container = document.getElementById('content');
     const maxGroupSize = 4;
     for (let groupStart = 0; groupStart < names.length; groupStart += maxGroupSize) {
-        let groupSize = Math.min(maxGroupSize, names.length - groupStart);
+        const groupSize = Math.min(maxGroupSize, names.length - groupStart);
         for (let weekid = 1; weekid <= 2; weekid++) {
-            let sheetRow = document.createElement('div');
+            const sheetRow = document.createElement('div');
             sheetRow.classList.add('row');
-            sheetRow.classList.add('row-cols-4');
+            sheetRow.classList.add(`row-cols-${maxGroupSize}`);
             sheetRow.style.pageBreakAfter = 'always';
-            for (let nameid = 0; nameid < groupSize; nameid++) {
-                const table = (weekid === 1 ? week1 : week2).cloneNode(true);
-                let id = weekid === 1 ? groupStart + nameid : groupStart + groupSize - nameid - 1; // reverse second sheet of names
-                table.querySelector('.employee-name').textContent = names[id];
-                sheetRow.appendChild(table);
+            for (let nameid = 0; nameid < maxGroupSize; nameid++) {
+                if (nameid < groupSize) {
+                    const table = (weekid === 1 ? week1 : week2).cloneNode(true);
+                    const id = weekid === 1 ? groupStart + nameid : groupStart + groupSize - nameid - 1; // reverse second sheet of names
+                    table.querySelector('.employee-name').textContent = names[id];
+                    sheetRow.appendChild(table);
+                } else {
+                    const blank = document.createElement('div');
+                    blank.classList.add('col');
+                    sheetRow.appendChild(blank);
+                }
             }
             container.appendChild(sheetRow);
         }
