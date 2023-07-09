@@ -26,7 +26,7 @@ window.makeTimesheets = function(date, names) {
     let container = document.getElementById('content');
     const maxGroupSize = 4;
     for (let groupStart = 0; groupStart < names.length; groupStart += maxGroupSize) {
-        let groupSize = min(maxGroupSize, names.length - groupStart);
+        let groupSize = Math.min(maxGroupSize, names.length - groupStart);
         for (let weekid = 1; weekid <= 2; weekid++) {
             let sheetRow = document.createElement('div');
             sheetRow.classList.add('row');
