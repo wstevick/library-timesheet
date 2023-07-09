@@ -11,7 +11,6 @@ window.makeTimesheets = function(date, names) {
     week1.querySelector('.week-num').textContent = '1';
     week2.querySelector('.week-num').textContent = '2';
 
-    console.log(week1.outerHTML);
 
     for (let i = 1; i <= 2; i++) {
         const week = i === 1 ? week1 : week2;
@@ -24,31 +23,20 @@ window.makeTimesheets = function(date, names) {
         }
     }
 
+    let container = document.getElementById('content');
     const groupSize = 4;
     for (let groupStart = 0; groupStart < names.length; groupStart += groupSize) {
-        console.log(`Printing timesheets for people ${groupStart} - ${groupStart + groupSize}`);
-        fillSheetsForPeople(names.slice(groupStart, groupStart + grupSize), week1, week2);
-        console.log(`sheets for ${names.slice(groupStart, groupStart + grupSize)}`);
+        for (let weekid = 1; weekid <= 2; weekid++) {
+            let sheetRow = document.createElement('div');
+            sheetRow.classList.add('row');
+            sheetRow.style.pageBreakAfter = true;
+            for (let nameid = 0; nameid < groupSize; nameid++) {
+                const table = (weekid === 1 ? week1 : week2).cloneNode(true);
+                let id = weekid === 1 ? groupStart + nameid : groupStart + groupSize - nameid; // reverse second sheet of names
+                table.querySelector('.employee-name').textContent = names[id];
+                sheetRow.appendChild(table);
+            }
+            container.appendChild(sheetRow);
+        }
     }
 };
-
-function fillSheetsForPeople(names, week1, week2) {
-    let container = document.getElementById('content');
-    console.log(names);
-    for (let j = 1; j <= 2; j++) {
-        console.log(`j = ${j}`);
-        let sheetRow = document.createElement('div');
-        sheetRow.classList.add('row');
-        sheetRow.style.pageBreakAfter = true;
-        for (let i = 0; i < names.length; i++) {
-            console.log(`i = ${i}`);
-            const table = (j === 1 ? week1 : week2).cloneNode(true);
-            table.querySelector('.employee-name').textContent = names[i];
-            sheetRow.appendChild(table);
-        }
-        console.log(sheetRow.outerHTML);
-        container.appendChild(sheetRow);
-        console.log(container.outerHTML);
-        names.reverse();
-    }
-}
