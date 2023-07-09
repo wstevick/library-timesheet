@@ -29,10 +29,10 @@ window.makeTimesheets = function(date, names) {
         for (let weekid = 1; weekid <= 2; weekid++) {
             let sheetRow = document.createElement('div');
             sheetRow.classList.add('row');
-            sheetRow.style.pageBreakAfter = true;
+            sheetRow.style.pageBreakAfter = 'always';
             for (let nameid = 0; nameid < groupSize; nameid++) {
                 const table = (weekid === 1 ? week1 : week2).cloneNode(true);
-                let id = weekid === 1 ? groupStart + nameid : groupStart + groupSize - nameid; // reverse second sheet of names
+                let id = weekid === 1 ? groupStart + nameid : groupStart + groupSize - nameid - 1; // reverse second sheet of names
                 table.querySelector('.employee-name').textContent = names[id];
                 sheetRow.appendChild(table);
             }
