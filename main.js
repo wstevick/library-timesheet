@@ -2,10 +2,14 @@ Date.prototype.incDays = function(days) {
     this.setDate(this.getDate() + days);
 }
 
+const employees = localStorage.getItem('employees') || '';
 document.getElementById('employees').value = 'Wes\nAndrew\nTricia\nZane';
 
 document.getElementById('print').onclick = function(e) {
-    if (!document.getElementById('start-date').value) return;
+    if (!document.getElementById('start-date').value) {
+        alert('You must provide a starting date');
+        return;
+    }
 
     const names = document.getElementById('employees').value.trim().split('\n');
 
@@ -16,6 +20,8 @@ document.getElementById('print').onclick = function(e) {
         document.getElementById('start-date').reset();
         return;
     }
+
+    localStorage.setItem('employees', names.join('\n'));
 
     const newwin = window.open('./timesheet-template.html');
     if (newwin === null) {
