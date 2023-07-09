@@ -34,11 +34,14 @@ window.makeTimesheets = function(date, names) {
 
 function fillSheetsForPeople(names, week1, week2) {
     let container = document.getElementById('content');
+    console.log(names);
     for (let j = 1; j <= 2; j++) {
+        console.log(`j = ${j}`);
         let sheetRow = document.createElement('div');
         sheetRow.classList.add('row');
         sheetRow.style.pageBreakAfter = true;
         for (let i = 0; i < names.length; i++) {
+            console.log(`i = ${i}`);
             const table = (j === 1 ? week1 : week2).cloneNode(true);
             table.querySelector('.employee-name').textContent = names[i];
             sheetRow.appendChild(table);
