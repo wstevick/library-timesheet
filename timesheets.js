@@ -33,9 +33,9 @@ window.makeTimesheets = function(date, names) {
             sheetRow.classList.add(`row-cols-${maxGroupSize}`);
             sheetRow.style.pageBreakAfter = 'always';
             for (let nameid = 0; nameid < maxGroupSize; nameid++) {
+                if (weekid === 2) nameid = maxGroupSize - nameid - 1; // reverse second sheet of names
                 if (nameid < groupSize) {
                     const table = (weekid === 1 ? week1 : week2).cloneNode(true);
-                    const id = weekid === 1 ? groupStart + nameid : groupStart + groupSize - nameid - 1; // reverse second sheet of names
                     table.querySelector('.employee-name').textContent = names[id];
                     sheetRow.appendChild(table);
                 } else {
