@@ -11,6 +11,8 @@ window.makeTimesheets = function(date, names) {
     week1.querySelector('.week-num').textContent = '1';
     week2.querySelector('.week-num').textContent = '2';
 
+    console.log(week1.outerHTML);
+
     for (let i = 1; i <= 2; i++) {
         const week = i === 1 ? week1 : week2;
 
@@ -41,7 +43,9 @@ function fillSheetsForPeople(names, week1, week2) {
             table.querySelector('.employee-name').textContent = names[i];
             sheetRow.appendChild(table);
         }
+        console.log(sheetRow.outerHTML);
         container.appendChild(sheetRow);
+        console.log(container.outerHTML);
         names.reverse();
     }
 }
