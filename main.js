@@ -2,7 +2,7 @@ Date.prototype.incDays = function(days) {
     this.setDate(this.getDate() + days);
 }
 
-document.getElementById('employees').value = 'Wes\nAndrew\nTricia';
+document.getElementById('employees').value = 'Wes\nAndrew\nTricia\nZane';
 
 document.getElementById('print').onclick = function(e) {
     if (!document.getElementById('start-date').value) return;
