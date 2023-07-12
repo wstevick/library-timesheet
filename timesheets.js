@@ -22,11 +22,11 @@ window.makeTimesheets = function(date, names) {
         }
     }
 
-    console.log(names);
     const groupSize = 4;
     for (let groupStart = 0; groupStart < names.length; groupStart += groupSize) {
         console.log(`Printing timesheets for people ${groupStart} - ${groupStart + groupSize}`);
         fillSheetsForPeople(names.slice(groupStart, groupStart + grupSize), week1, week2);
+        console.log(`sheets for ${names.slice(groupStart, groupStart + grupSize)}`);
     }
 };
 
