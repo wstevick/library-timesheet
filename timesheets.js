@@ -25,6 +25,7 @@ window.makeTimesheets = function(date, names) {
     const groupSize = 4;
     for (let groupStart = 0; groupStart < names.length; groupStart += groupSize) {
         fillSheetsForPeople(names.slice(groupStart, groupStart + grupSize), week1, week2);
+        console.log(`Printing timesheets for people ${groupStart} - ${groupStart + groupSize}`);
     }
 };
 
