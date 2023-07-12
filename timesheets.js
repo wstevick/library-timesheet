@@ -22,12 +22,24 @@ window.makeTimesheets = function(date, names) {
         }
     }
 
+    const groupSize = 4;
+    for (let groupStart = 0; groupStart < names.length; groupStart += groupSize) {
+        fillSheetsForPeople(names.slice(groupStart, groupStart + grupSize), week1, week2);
+    }
+};
+
+function fillSheetsForPeople(names, week1, week2) {
+    let container = document.getElementById('content');
     for (let j = 1; j <= 2; j++) {
+        let sheetRow = document.createElement('div');
+        sheetRow.classList.add('row');
+        sheetRow.style.pageBreakAfter = true;
         for (let i = 0; i < names.length; i++) {
             const table = (j === 1 ? week1 : week2).cloneNode(true);
             table.querySelector('.employee-name').textContent = names[i];
-            document.getElementById(`week-${j}`).appendChild(table);
+            sheetRow.appendChild(table);
         }
+        container.appendChild(sheetRow);
         names.reverse();
     }
-};
+}
