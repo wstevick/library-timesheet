@@ -1,4 +1,5 @@
 window.makeTimesheets = function(date, names) {
+    console.log('debug 1');
     const tableTemplate = document.getElementById('table-template').innerHTML;
 
     const week1 = document.createElement('div');
@@ -22,6 +23,7 @@ window.makeTimesheets = function(date, names) {
         }
     }
 
+    console.log('debug 2');
     const groupSize = 4;
     for (let groupStart = 0; groupStart < names.length; groupStart += groupSize) {
         fillSheetsForPeople(names.slice(groupStart, groupStart + grupSize), week1, week2);
